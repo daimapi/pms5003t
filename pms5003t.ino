@@ -1,20 +1,25 @@
 //UTF-8
+////////////////////////////////////////////////////////environment setting
 #include <PMS.h> 
 #include <SoftwareSerial.h> 
-
 SoftwareSerial Serial1(2, 3); // 將Arduino Pin2設定為RX, Pin3設定為TX
 PMS pms(Serial1);
 PMS::DATA data;
-
+///////////////////////////////////////////////////////
 void setup()
 {
+  /////////////////////////////////////////////////////void setup
   Serial.begin(9600);   
   Serial1.begin(9600);//for pms
   pms.passiveMode();
+  /////////////////////////////////////////////////////
 }
 void loop()
 {
-  
+  PMSreq();
+}
+void PMSreq()
+{
   if (Serial.available()>0 && Serial.read()=='1')
   {
     Serial.println("o");
